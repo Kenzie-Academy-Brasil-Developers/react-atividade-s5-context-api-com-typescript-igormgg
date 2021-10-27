@@ -10,10 +10,10 @@ const Cart = () => {
 
   return (
     <CartContainer>
+      <h5>Carrinho</h5>
       <ul>
         {cart.map((item, index) => (
           <li key={index}>
-            <h1>{item.id}</h1>
             <h2>{item.title}</h2>
             <img src={item.image} alt={item.name} />
             <h3>{item.description}</h3>

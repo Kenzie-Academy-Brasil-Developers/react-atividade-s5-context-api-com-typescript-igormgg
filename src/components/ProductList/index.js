@@ -3,18 +3,22 @@ import { products } from "../Products";
 import { ProductListContainer } from "./styles";
 
 const ProductList = () => {
-  const { addProduct } = useCart();
+  const { addProduct, cart } = useCart();
 
   const handleClick = (item) => {
-    addProduct(item);
+    const findProduct = cart.find((prd) => prd.id === item.id);
+
+    if (!cart.includes(findProduct)) {
+      addProduct(item);
+    }
   };
 
   return (
     <ProductListContainer>
+      <h5>Produtos</h5>
       <ul>
         {products.map((item, index) => (
           <li key={index}>
-            <h1>{item.id}</h1>
             <h2>{item.title}</h2>
             <img src={item.image} alt={item.name} />
             <h3>{item.description}</h3>
